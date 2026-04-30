@@ -1,11 +1,13 @@
 package com.example.calmtask.ui.screens
 
+// MorningGreetingActivity has been moved to:
+// app/src/main/java/com/example/calmtask/MorningGreetingActivity.kt
+// This file now only contains the reusable MorningScreenContent composable.
+
 import android.content.Intent
 import android.media.MediaPlayer
-import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -19,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.calmtask.MainActivity
 import com.example.calmtask.data.repository.AppRepository
 import com.example.calmtask.ui.components.GradientButton
 import com.example.calmtask.ui.theme.*
@@ -28,17 +31,6 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
-class MorningGreetingActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            CalmTaskTheme {
-                MorningScreenContent()
-            }
-        }
-    }
-}
 
 @Composable
 fun MorningScreenContent() {
@@ -101,7 +93,7 @@ fun MorningScreenContent() {
                         tts.init(profile.languageCode, profile.ttsSpeed, profile.ttsPitch)
                         tts.speak(taskSummary)
                     }
-                    context.startActivity(Intent(context, com.example.calmtask.MainActivity::class.java))
+                    context.startActivity(Intent(context, MainActivity::class.java))
                     (context as? ComponentActivity)?.finish()
                 }
             )
