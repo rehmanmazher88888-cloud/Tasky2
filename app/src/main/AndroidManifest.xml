@@ -41,9 +41,8 @@
             android:theme="@style/Theme.CalmTaskVoice.Fullscreen" />
 
         <service
-            android:name=".service.CalmTaskForegroundService"
-            android:foregroundServiceType="microphone"
-            android:exported="false" />
+    android:name=".service.CalmTaskForegroundService"
+    android:exported="false" />
 
         <receiver
             android:name=".receiver.UnlockReceiver"
