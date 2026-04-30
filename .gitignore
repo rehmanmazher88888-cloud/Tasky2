@@ -1,0 +1,5 @@
+.config
+.ssh
+storage
+*.zip
+.gitconfig
