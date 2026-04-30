@@ -33,7 +33,6 @@ class AppRepository(private val context: Context) {
         val KEY_LAST_MORNING = stringPreferencesKey("lastmorningdate")
         val KEY_VOICE_COMPLETE = booleanPreferencesKey("voice_recording_complete")
         val KEY_ONBOARDING_COMPLETE = booleanPreferencesKey("onboarding_complete")
-        // Settings extras
         val KEY_ELEVEN_LABS_KEY = stringPreferencesKey("eleven_labs_key")
         val KEY_ELEVEN_LABS_VOICE_ID = stringPreferencesKey("eleven_labs_voice_id")
         val KEY_TTS_SPEED = floatPreferencesKey("tts_speed")
@@ -140,12 +139,12 @@ class AppRepository(private val context: Context) {
 
     // ---------- Morning / State ----------
     suspend fun saveLastMorningDate(date: String) {
-        context.dataStore.edit { it[KEY_LAST_MORNING] = date }
+        context.dataStore.edit { prefs -> prefs[KEY_LAST_MORNING] = date }
     }
 
     fun getLastMorningDateSync(): String? {
         return runBlocking {
-            context.dataStore.data.map { it[KEY_LAST_MORNING] }.first()
+            context.dataStore.data.map { prefs -> prefs[KEY_LAST_MORNING] }.first()
         }
     }
 
@@ -199,7 +198,7 @@ class AppRepository(private val context: Context) {
     // ---------- Helper for BroadcastReceiver ----------
     fun getProfileBlocking(): UserProfile {
         return runBlocking {
-            val json = context.dataStore.data.map { it[KEY_PROFILE] }.first() ?: ""
+            val json = context.dataStore.data.map { prefs -> prefs[KEY_PROFILE] }.first() ?: ""
             if (json.isBlank()) UserProfile()
             else gson.fromJson(json, UserProfile::class.java)
         }
