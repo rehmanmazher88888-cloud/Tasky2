@@ -3,8 +3,8 @@ package com.example.calmtask.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.example.calmtask.MorningGreetingActivity  // ← FIXED: was com.example.calmtask.ui.screens.MorningGreetingActivity
 import com.example.calmtask.data.repository.AppRepository
-import com.example.calmtask.ui.screens.MorningGreetingActivity
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
