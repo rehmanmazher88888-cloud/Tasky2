@@ -29,7 +29,7 @@ class CalmTaskForegroundService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "foreground_service",
-                getString(R.string.channel_foreground),
+                "CalmTask Service",
                 NotificationManager.IMPORTANCE_LOW
             ).apply { description = "CalmTask background checks" }
             val manager = getSystemService(NotificationManager::class.java)
